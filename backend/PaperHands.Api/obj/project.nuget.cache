@@ -1,11 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "/d4/8Vb2B94=",
+  "dgSpecHash": "uP5MrWocCXk=",
   "success": true,
-  "projectFilePath": "C:\\VSCode\\Personal Projects\\PaperHands\\backend\\PaperHands.Api\\PaperHands.Api.csproj",
+  "projectFilePath": "c:\\VSCode\\Personal Projects\\PaperHands\\backend\\PaperHands.Api\\PaperHands.Api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\David\\.nuget\\packages\\dotnetenv\\3.1.1\\dotnetenv.3.1.1.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.1\\microsoft.aspnetcore.openapi.10.0.1.nupkg.sha512",
-    "C:\\Users\\David\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+    "C:\\Users\\David\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\David\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512",
+    "C:\\Users\\David\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
+    "C:\\Users\\David\\.nuget\\packages\\sprache\\2.3.1\\sprache.2.3.1.nupkg.sha512"
   ],
   "logs": []
 }

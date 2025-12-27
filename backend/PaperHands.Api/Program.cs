@@ -1,4 +1,14 @@
+// Load environment variables from .env file
+var envPath = Path.Combine(Directory.GetCurrentDirectory(), ".env");
+if (File.Exists(envPath))
+{
+    DotNetEnv.Env.Load(envPath);
+}
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Add environment variables to configuration
+builder.Configuration.AddEnvironmentVariables();
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

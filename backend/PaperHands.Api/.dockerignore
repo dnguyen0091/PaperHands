@@ -1,0 +1,26 @@
+# Build outputs
+bin
+obj
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# User-specific files
+*.user
+*.suo
+
+# Environment files
+appsettings.Development.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Documentation
+*.md
+
+# Docker files
+Dockerfile*

@@ -1,0 +1,40 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+    networks:
+      - paperhands-network
+  db:
+    image: timescale/timescaledb:latest-pg16
+    container_name: paperhands_db
+    ports:
+      - "${DB_PORT}:5432"
+    environment:
+      - POSTGRES_USER= ${DB_USER}
+      - POSTGRES_PASSWORD= ${DB_PASSWORD}
+      - POSTGRES_DB= ${DB_NAME}
+    volumes:
+      - postgres_data: /var/lib/postgresql/data
+  api:
+    build:
+      context: ./backend/PaperHands.Api
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    networks:
+      - paperhands-network
+
+networks:
+  paperhands-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
