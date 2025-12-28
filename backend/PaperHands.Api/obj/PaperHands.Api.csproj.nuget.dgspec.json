@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\VSCode\\Personal Projects\\PaperHands\\backend\\PaperHands.Api\\PaperHands.Api.csproj": {}
+    "C:\\VSCode\\Personal Projects\\PaperHands\\backend\\PaperHands.Api\\PaperHands.Api.csproj": {}
   },
   "projects": {
-    "c:\\VSCode\\Personal Projects\\PaperHands\\backend\\PaperHands.Api\\PaperHands.Api.csproj": {
+    "C:\\VSCode\\Personal Projects\\PaperHands\\backend\\PaperHands.Api\\PaperHands.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\VSCode\\Personal Projects\\PaperHands\\backend\\PaperHands.Api\\PaperHands.Api.csproj",
+        "projectUniqueName": "C:\\VSCode\\Personal Projects\\PaperHands\\backend\\PaperHands.Api\\PaperHands.Api.csproj",
         "projectName": "PaperHands.Api",
-        "projectPath": "c:\\VSCode\\Personal Projects\\PaperHands\\backend\\PaperHands.Api\\PaperHands.Api.csproj",
+        "projectPath": "C:\\VSCode\\Personal Projects\\PaperHands\\backend\\PaperHands.Api\\PaperHands.Api.csproj",
         "packagesPath": "C:\\Users\\David\\.nuget\\packages\\",
-        "outputPath": "c:\\VSCode\\Personal Projects\\PaperHands\\backend\\PaperHands.Api\\obj\\",
+        "outputPath": "C:\\VSCode\\Personal Projects\\PaperHands\\backend\\PaperHands.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\David\\AppData\\Roaming\\NuGet\\NuGet.Config"
