@@ -1,4 +1,4 @@
-export default function SignInUp() {
+export default function signUp() {
   return (
     <>
       {/* Sign In Form */}
