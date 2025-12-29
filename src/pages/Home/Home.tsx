@@ -1,182 +1,175 @@
+import { useState } from "react";
 import Apple from "../../assets/logo/appleIcon.svg";
 import Google from "../../assets/logo/googleIcon.svg";
 import Microsoft from "../../assets/logo/microsoftIcon.svg";
-import SignInUp from "../../components/Forms/Authentication/SignInUp";
+import SignIn from "../../components/Forms/Authentication/signIn.tsx";
+import SignUp from "../../components/Forms/Authentication/signUp.tsx";
+import SignInUpToggle from "../../components/Helper/signInUpToggle.tsx";
+
 export default function Home() {
-  return (
-    <div className="h-screen w-screen">
-      <div className="flex flex-row h-full">
-        {/* Sign In Section */}
-        <div className="bg-[var(--accent)] w-[40%] flex items-center justify-center">
-          <div className="w-full max-w-md px-8">
-            {/* Logo */}
-            <div className="flex justify-center mb-8">
-              <img
-                src="/react.svg"
-                alt="PaperHands Logo"
-                className="h-16 w-16"
-              />
-            </div>
+    const [isSignIn, setIsSignIn] = useState(true);
 
-            {/* Welcome Text */}
-            <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold text-white mb-2">
-                Welcome Back
-              </h1>
-              <p className="text-white/80">Sign in to continue to PaperHands</p>
-            </div>
-            <SignInUp />
-            {/* Divider */}
-            <div className="flex items-center my-6 p-[2rem]">
-              <div className="flex-1 border-t border-white/30"></div>
-              <span className="px-4 text-white/70 text-sm">
-                or continue with
-              </span>
-              <div className="flex-1 border-t border-white/30"></div>
-            </div>
-
-            {/* Third Party Login Options */}
-            <div className="flex flex-row justify-center gap-4 ">
-              <button className="w-[5vw] h-[5vw] bg-white rounded-full hover:bg-gray-100 transition-colors flex items-center justify-center shadow-md">
-                <img src={Google} alt="Google" className="w-[4vw] h-[4vw]" />
-              </button>
-              <button className="w-[5vw] h-[5vw] bg-white rounded-full hover:bg-gray-100 transition-colors flex items-center justify-center shadow-md">
-                <img src={Apple} alt="Apple" className="w-[4vw] h-[4vw]" />
-              </button>
-              <button className="w-[5vw] h-[5vw] bg-white rounded-full hover:bg-gray-100 transition-colors flex items-center justify-center shadow-md">
+    return (
+        <div className="h-screen w-screen">
+        <div className="flex flex-row h-full">
+            <div className="bg-[var(--accent)] w-[40%] flex items-center justify-center">
+            <div className="w-full max-w-md px-8">
+                <div className="flex justify-center mb-8">
                 <img
-                  src={Microsoft}
-                  alt="Microsoft"
-                  className="w-[4vw] h-[4vw]"
+                    src="/react.svg"
+                    alt="PaperHands Logo"
+                    className="h-16 w-16"
                 />
-              </button>
+                </div>
+
+                <div className="text-center mb-8"><p className="text-white/80">Let's get started</p></div>
+
+                <div className="flex justify-center flex-col items-center">
+                    <SignInUpToggle isSignIn={isSignIn} setIsSignIn={setIsSignIn} />
+                    {isSignIn ? <SignUp /> : <SignIn />}
+                </div>
+                
+                <div className="flex items-center my-6 p-[2rem] gap-[0.5rem]">
+                    <div className="flex-1 border-t border-white/30"></div>
+                    <span className="px-4 text-white/70 text-sm">
+                        or continue with
+                    </span>
+                    <div className="flex-1 border-t border-white/30"></div>
+                </div>
+
+                <div className="flex flex-row justify-center gap-[2rem] ">
+                <button title="Google" className="w-[3vw] h-[3vw] bg-white rounded-full hover:bg-gray-100 transition-colors flex items-center justify-center shadow-md">
+                    <img src={Google} alt="Google" className="w-[2vw] h-[2vw]" />
+                </button>
+                <button title="Apple" className="w-[3vw] h-[3vw] bg-white rounded-full hover:bg-gray-100 transition-colors flex items-center justify-center shadow-md">
+                    <img src={Apple} alt="Apple" className="w-[2vw] h-[2vw]" />
+                </button>
+                <button title="Microsoft" className="w-[3vw] h-[3vw] bg-white rounded-full hover:bg-gray-100 transition-colors flex items-center justify-center shadow-md">
+                    <img
+                    src={Microsoft}
+                    alt="Microsoft"
+                    className="w-[2vw] h-[2vw]"
+                    />
+                </button>
+                </div>
+            </div>
             </div>
 
-            {/* Sign Up Link */}
-            <p className="text-center mt-8 text-white/80">
-              Don't have an account?{" "}
-              <a href="#" className="text-white font-semibold hover:underline">
-                Sign up
-              </a>
-            </p>
-          </div>
+            {/* Information Section */}
+            <div className="bg-[var(--black)] w-[60%] flex items-center justify-center relative overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-5">
+                <div className="absolute top-20 left-20 w-72 h-72 bg-[var(--accent)] rounded-full blur-3xl"></div>
+                <div className="absolute bottom-20 right-20 w-96 h-96 bg-[var(--accent)] rounded-full blur-3xl"></div>
+            </div>
+
+            <div className="relative z-10 max-w-2xl px-12 text-center">
+                {/* Main Heading */}
+                <h2 className="text-5xl font-bold text-white mb-6">
+                Track Your Investments with Confidence
+                </h2>
+
+                {/* Subtitle */}
+                <p className="text-xl text-[var(--secondary)] mb-12">
+                PaperHands helps you monitor your portfolio, analyze market
+                trends, and make informed investment decisions—all in one place.
+                </p>
+
+                {/* Feature Cards */}
+                <div className="grid grid-cols-3 gap-6 text-left">
+                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+                    <div className="w-12 h-12 bg-[var(--accent)]/20 rounded-lg flex items-center justify-center mb-4">
+                    <svg
+                        className="w-6 h-6 text-[var(--accent)]"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                        />
+                    </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold text-white mb-2">
+                    Real-time Tracking
+                    </h3>
+                    <p className="text-sm text-[var(--secondary)]">
+                    Monitor your investments with live market data updates.
+                    </p>
+                </div>
+
+                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+                    <div className="w-12 h-12 bg-[var(--accent)]/20 rounded-lg flex items-center justify-center mb-4">
+                    <svg
+                        className="w-6 h-6 text-[var(--accent)]"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                        />
+                    </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold text-white mb-2">
+                    Portfolio Analytics
+                    </h3>
+                    <p className="text-sm text-[var(--secondary)]">
+                    Get detailed insights and performance metrics.
+                    </p>
+                </div>
+
+                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+                    <div className="w-12 h-12 bg-[var(--accent)]/20 rounded-lg flex items-center justify-center mb-4">
+                    <svg
+                        className="w-6 h-6 text-[var(--accent)]"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                        />
+                    </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold text-white mb-2">
+                    Secure & Private
+                    </h3>
+                    <p className="text-sm text-[var(--secondary)]">
+                    Your data is encrypted and protected at all times.
+                    </p>
+                </div>
+                </div>
+
+                {/* Stats */}
+                <div className="flex justify-center gap-16 mt-12 pt-12 border-t border-white/10">
+                <div>
+                    <p className="text-4xl font-bold text-[var(--accent)]">10K+</p>
+                    <p className="text-sm text-[var(--secondary)]">Active Users</p>
+                </div>
+                <div>
+                    <p className="text-4xl font-bold text-[var(--accent)]">$2B+</p>
+                    <p className="text-sm text-[var(--secondary)]">
+                    Assets Tracked
+                    </p>
+                </div>
+                <div>
+                    <p className="text-4xl font-bold text-[var(--accent)]">99.9%</p>
+                    <p className="text-sm text-[var(--secondary)]">Uptime</p>
+                </div>
+                </div>
+            </div>
+            </div>
         </div>
-
-        {/* Information Section */}
-        <div className="bg-[var(--black)] w-[60%] flex items-center justify-center relative overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-20 left-20 w-72 h-72 bg-[var(--accent)] rounded-full blur-3xl"></div>
-            <div className="absolute bottom-20 right-20 w-96 h-96 bg-[var(--accent)] rounded-full blur-3xl"></div>
-          </div>
-
-          <div className="relative z-10 max-w-2xl px-12 text-center">
-            {/* Main Heading */}
-            <h2 className="text-5xl font-bold text-white mb-6">
-              Track Your Investments with Confidence
-            </h2>
-
-            {/* Subtitle */}
-            <p className="text-xl text-[var(--secondary)] mb-12">
-              PaperHands helps you monitor your portfolio, analyze market
-              trends, and make informed investment decisions—all in one place.
-            </p>
-
-            {/* Feature Cards */}
-            <div className="grid grid-cols-3 gap-6 text-left">
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-                <div className="w-12 h-12 bg-[var(--accent)]/20 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-[var(--accent)]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  Real-time Tracking
-                </h3>
-                <p className="text-sm text-[var(--secondary)]">
-                  Monitor your investments with live market data updates.
-                </p>
-              </div>
-
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-                <div className="w-12 h-12 bg-[var(--accent)]/20 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-[var(--accent)]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  Portfolio Analytics
-                </h3>
-                <p className="text-sm text-[var(--secondary)]">
-                  Get detailed insights and performance metrics.
-                </p>
-              </div>
-
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
-                <div className="w-12 h-12 bg-[var(--accent)]/20 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-[var(--accent)]"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  Secure & Private
-                </h3>
-                <p className="text-sm text-[var(--secondary)]">
-                  Your data is encrypted and protected at all times.
-                </p>
-              </div>
-            </div>
-
-            {/* Stats */}
-            <div className="flex justify-center gap-16 mt-12 pt-12 border-t border-white/10">
-              <div>
-                <p className="text-4xl font-bold text-[var(--accent)]">10K+</p>
-                <p className="text-sm text-[var(--secondary)]">Active Users</p>
-              </div>
-              <div>
-                <p className="text-4xl font-bold text-[var(--accent)]">$2B+</p>
-                <p className="text-sm text-[var(--secondary)]">
-                  Assets Tracked
-                </p>
-              </div>
-              <div>
-                <p className="text-4xl font-bold text-[var(--accent)]">99.9%</p>
-                <p className="text-sm text-[var(--secondary)]">Uptime</p>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
