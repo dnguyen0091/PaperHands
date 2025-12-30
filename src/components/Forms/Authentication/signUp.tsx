@@ -1,7 +1,14 @@
-export default function signUp() {
+import { useNavigate } from "react-router-dom";
+
+export default function SignUp() {
+  const navigate = useNavigate();
+
+  const onSubmission = () => {
+    navigate("/under-construction"); //Placeholder
+  };
+  
   return (
     <>
-      {/* Sign Up Form */}
       <form className="space-y-4">
         <div>
           <label
@@ -51,6 +58,7 @@ export default function signUp() {
         <button
           type="submit"
           className="w-full py-3 px-4 bg-white text-[var(--accent)] font-semibold rounded-lg hover:bg-white/90 transition-colors"
+          onClick={onSubmission}
         >
           Sign Up
         </button>

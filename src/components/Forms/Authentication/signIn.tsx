@@ -1,7 +1,13 @@
-export default function signIn() {
+import { useNavigate } from "react-router-dom";
+
+export default function SignIn() {
+  const navigate = useNavigate()
+
+  const handleSubmission = () => {
+    navigate("/under-construction") //Placeholder 
+  }
   return (
     <>
-      {/* Sign In Form */}
       <form className="flex flex-col space-y-4">
         <div>
           <label
@@ -43,6 +49,7 @@ export default function signIn() {
         <button
           type="submit"
           className="w-full py-3 px-4 bg-white text-[var(--accent)] font-semibold rounded-lg hover:bg-white/90 transition-colors"
+          onClick={handleSubmission}
         >
           Sign In
         </button>
