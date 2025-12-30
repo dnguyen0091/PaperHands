@@ -13,13 +13,12 @@ export default function frontPageInformation() {
             <div className="relative z-10 max-w-2xl px-12 text-center">
                 {/* Main Heading */}
                 <h2 className="text-5xl font-bold text-white mb-6">
-                Track Your Investments with Confidence
+                Test Your Trading Strategies, Risk-Free
                 </h2>
 
                 {/* Subtitle */}
                 <p className="text-xl text-[var(--secondary)] mb-12">
-                PaperHands helps you monitor your portfolio, analyze market
-                trends, and make informed investment decisions—all in one place.
+                Our platform provides a simulated market environment where you can practice trading with virtual funds. Hone your skills without any real-world financial risk.
                 </p>
 
                 {/* Feature Cards */}
@@ -41,10 +40,10 @@ export default function frontPageInformation() {
                     </svg>
                     </div>
                     <h3 className="text-lg font-semibold text-white mb-2">
-                    Real-time Tracking
+                    Realistic Market Simulation
                     </h3>
                     <p className="text-sm text-[var(--secondary)]">
-                    Monitor your investments with live market data updates.
+                    Trade with up-to-the-minute data from real-world markets.
                     </p>
                 </div>
 
@@ -65,10 +64,10 @@ export default function frontPageInformation() {
                     </svg>
                     </div>
                     <h3 className="text-lg font-semibold text-white mb-2">
-                    Portfolio Analytics
+                    Performance Analysis
                     </h3>
                     <p className="text-sm text-[var(--secondary)]">
-                    Get detailed insights and performance metrics.
+                    Track the performance of your strategies and identify what works.
                     </p>
                 </div>
 
@@ -89,10 +88,10 @@ export default function frontPageInformation() {
                     </svg>
                     </div>
                     <h3 className="text-lg font-semibold text-white mb-2">
-                    Secure & Private
+                    Safe & Risk-Free
                     </h3>
                     <p className="text-sm text-[var(--secondary)]">
-                    Your data is encrypted and protected at all times.
+                    Experiment with any trading algorithm without risking real capital.
                     </p>
                 </div>
                 </div>
@@ -101,17 +100,17 @@ export default function frontPageInformation() {
                 <div className="flex justify-center gap-16 mt-12 pt-12 border-t border-white/10">
                 <div>
                     <p className="text-4xl font-bold text-[var(--accent)]">10K+</p>
-                    <p className="text-sm text-[var(--secondary)]">Active Users</p>
+                    <p className="text-sm text-[var(--secondary)]">Simulations Ran</p>
                 </div>
                 <div>
-                    <p className="text-4xl font-bold text-[var(--accent)]">$2B+</p>
+                    <p className="text-4xl font-bold text-[var(--accent)]">100+</p>
                     <p className="text-sm text-[var(--secondary)]">
-                    Assets Tracked
+                    Strategies Tested
                     </p>
                 </div>
                 <div>
-                    <p className="text-4xl font-bold text-[var(--accent)]">99.9%</p>
-                    <p className="text-sm text-[var(--secondary)]">Uptime</p>
+                    <p className="text-4xl font-bold text-[var(--accent)]">100%</p>
+                    <p className="text-sm text-[var(--secondary)]">Risk-Free</p>
                 </div>
                 </div>
             </div>
