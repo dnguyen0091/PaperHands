@@ -6,6 +6,7 @@ import SignIn from "../../components/Forms/Authentication/signIn.tsx";
 import SignUp from "../../components/Forms/Authentication/signUp.tsx";
 import FrontPageInformation from "../../components/Helper/frontPageInformation.tsx";
 import SignInUpToggle from "../../components/Helper/signInUpToggle.tsx";
+
 export default function Home() {
     const [isSignIn, setIsSignIn] = useState(true);
 
@@ -16,7 +17,7 @@ export default function Home() {
             <div className="w-full max-w-md px-8">
                 <div className="flex justify-center mb-8">
                 <img
-                    src="/react.svg"
+                    src="/paperhands-logo.svg"
                     alt="PaperHands Logo"
                     className="h-16 w-16"
                 />
@@ -26,7 +27,7 @@ export default function Home() {
 
                 <div className="flex justify-center flex-col items-center">
                     <SignInUpToggle isSignIn={isSignIn} setIsSignIn={setIsSignIn} />
-                    {isSignIn ? <SignUp /> : <SignIn />}
+                    {isSignIn ? <SignIn />:<SignUp />  }
                 </div>
                 
                 <div className="flex items-center my-6 p-[2rem] gap-[0.5rem]">
