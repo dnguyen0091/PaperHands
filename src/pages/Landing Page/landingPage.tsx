@@ -13,7 +13,7 @@ export default function landingPage() {
     return (
         <div className="h-screen w-screen">
         <div className="flex flex-row h-full">
-            <div className="bg-[var(--accent)] w-[40%] flex items-center justify-center">
+            <div className="bg-[var(--white)] w-[40%] flex items-center justify-center">
             <div className="w-full max-w-md px-8">
                 <div className="flex justify-center mb-8">
                 <img
@@ -31,11 +31,11 @@ export default function landingPage() {
                 </div>
                 
                 <div className="flex items-center my-6 p-[2rem] gap-[0.5rem]">
-                    <div className="flex-1 border-t border-white/30"></div>
+                    <div className="flex-1 border-t border-[var(--accent)]"/>
                     <span className="px-4 text-white/70 text-sm">
                         or continue with
                     </span>
-                    <div className="flex-1 border-t border-white/30"></div>
+                    <div className="flex-1 border-t border-[var(--accent)]"/>
                 </div>
 
                 <div className="flex flex-row justify-center gap-[2rem] ">

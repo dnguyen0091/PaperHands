@@ -9,23 +9,18 @@ export default function SignUp() {
   
   return (
     <>
-      <form className="space-y-4">
-        <div>
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium text-white mb-1"
-          >
-            Email
-          </label>
+      <form className="flex flex-col mt-[4vh] items-center">
+        <div className="flex flex-col items-start mb-[2vh]">
+          <label htmlFor="email" className="block text-sm font-medium text-white mb-1 self-start">Email</label>
           <input
             type="email"
             id="email"
-            placeholder="Enter your email"
-            className="w-full rounded-[4px]"
+            placeholder="you@example.com"
+            className="w-[40vh] h-[4vh] bg-transparent border-0 border-b-2 border-[var(--accent)] focus:outline-none focus:ring-0 text-white placeholder-white/50 mb-4"
           />
         </div>
 
-        <div>
+        <div className="flex flex-col items-start mb-[2vh]">
           <label
             htmlFor="password"
             className="block text-sm font-medium text-white mb-1"
@@ -36,11 +31,11 @@ export default function SignUp() {
             type="password"
             id="password"
             placeholder="Enter your password"
-            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+            className="w-[40vh] h-[4vh] bg-transparent border-0 border-b-2 border-[var(--accent)] focus:outline-none focus:ring-0 text-white placeholder-white/50 mb-4"
           />
         </div>
 
-        <div>
+        <div className="flex flex-col items-start mb-[4vh]">
           <label
             htmlFor="password"
             className="block text-sm font-medium text-white mb-1"
@@ -50,14 +45,14 @@ export default function SignUp() {
           <input
             type="password"
             id="confirm-password"
-            placeholder="Confirms your password"
-            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+            placeholder="Re-enter your password"
+            className="w-[40vh] h-[4vh] bg-transparent border-0 border-b-2 border-[var(--accent)] focus:outline-none focus:ring-0 text-white placeholder-white/50 mb-4"
           />
         </div>
 
         <button
           type="submit"
-          className="w-full py-3 px-4 bg-white text-[var(--accent)] font-semibold rounded-lg hover:bg-white/90 transition-colors"
+          className="w-[15vw] h-[4vh] mt-[4vh] py-3 px-4 bg-transparent border-2 border-[var(--accent)] text-[var(--accent)] font-semibold hover:bg-[var(--accent)] hover:text-white transition-colors duration-300"
           onClick={onSubmission}
         >
           Sign Up

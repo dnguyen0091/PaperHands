@@ -60,20 +60,3 @@ export default function HomePage() {
         </div>
     );
 }
-
-// export type Position = {
-//     symbol: string;
-//     qty: number;
-//     cost: number;
-//     market: number;
-//     pnl: number;
-// };
-
-// export type Trade = {
-//     id: string;
-//     when: string;
-//     side: 'BUY' | 'SELL';
-//     symbol: string;
-//     qty: number;
-//     price: number;
-// };
