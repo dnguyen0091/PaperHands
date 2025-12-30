@@ -61,14 +61,6 @@ export default function HomePage() {
     );
 }
 
-
-// export type AccountSummary = {
-//     balance: number;
-//     pnl: number;
-//     dailyChangePct: number;
-//     history: number[];
-// };
-
 // export type Position = {
 //     symbol: string;
 //     qty: number;

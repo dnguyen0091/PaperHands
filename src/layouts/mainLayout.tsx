@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom';
-import Header from '../components/Helper/header.tsx';
+// import Header from '../components/Helper/header.tsx';
 
 function MainLayout() {
   return (
     <div className="app-container">
-      <Header />
+      {/* <Header /> */}
       
       {/* Content area */}
       <div className="content-container">
