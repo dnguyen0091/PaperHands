@@ -4,7 +4,7 @@ export default function SignUp() {
   const navigate = useNavigate();
 
   const onSubmission = () => {
-    navigate("/under-construction"); //Placeholder
+    navigate("/home"); 
   };
   
   return (

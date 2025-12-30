@@ -4,7 +4,7 @@ export default function SignIn() {
   const navigate = useNavigate()
 
   const handleSubmission = () => {
-    navigate("/under-construction") //Placeholder 
+    navigate("/home"); 
   }
   return (
     <>

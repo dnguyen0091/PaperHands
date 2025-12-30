@@ -1,12 +1,10 @@
 import { Outlet } from 'react-router-dom';
-//import Header from '../components/Header/header';
-//import NavPill from '../components/Navigation/navPill';
+import Header from '../components/Helper/header.tsx';
 
 function MainLayout() {
   return (
     <div className="app-container">
-      {/* Header with no extra margins */}
-      {/* <Header /> */}
+      <Header />
       
       {/* Content area */}
       <div className="content-container">
