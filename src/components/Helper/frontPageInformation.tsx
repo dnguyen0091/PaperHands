@@ -1,4 +1,4 @@
-export default function frontPageInformation() {
+export default function FrontPageInformation() {
 
     return (
         <>

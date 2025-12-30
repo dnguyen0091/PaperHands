@@ -19,8 +19,8 @@ export default function SignIn() {
           <input
             type="email"
             id="email"
-            placeholder="Enter your email"
-            className="w-[15vw]"
+            placeholder="you@example.com"
+            className="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent"
           />
         </div>
         <div>
@@ -33,13 +33,13 @@ export default function SignIn() {
           <input
             type="password"
             id="password"
-            placeholder="Enter your password"
-            className="w-[15vw]"
+            placeholder="••••••••"
+            className="w-full px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent"
           />
         </div>
         <div className="flex items-center justify-between text-sm">
           <label className="flex items-center text-white">
-            <input type="checkbox" className="mr-2 rounded" />
+            <input type="checkbox" className="h-4 w-4 rounded border-gray-600 bg-gray-800 text-[var(--accent)] focus:ring-[var(--accent)] mr-2" />
             Remember me
           </label>
           <a href="#" className="text-white hover:underline">
