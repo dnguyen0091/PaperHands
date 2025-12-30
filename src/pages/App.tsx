@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 // import { AuthProvider } from '../context/AuthContext.tsx'
 import MainLayout from '../layouts/mainLayout.tsx'
 import NoLayout from '../layouts/noLayout.tsx'
-import './App.css'
 import HomePage from './Home/home.tsx'
 import LandingPage from './Landing Page/landingPage.tsx'
 import ErrorPage from "./Page Down/error.tsx"
