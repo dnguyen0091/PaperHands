@@ -7,7 +7,7 @@ import SignUp from "../../components/Forms/Authentication/signUp.tsx";
 import FrontPageInformation from "../../components/Helper/frontPageInformation.tsx";
 import SignInUpToggle from "../../components/Helper/signInUpToggle.tsx";
 
-export default function Home() {
+export default function landingPage() {
     const [isSignIn, setIsSignIn] = useState(true);
 
     return (
