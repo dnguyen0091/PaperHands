@@ -1,4 +1,7 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import eyeClosedIcon from "../../../assets/icons/eyeClosedIcon.svg";
+import eyeOpenIcon from "../../../assets/icons/eyeOpenIcon.svg";
 
 export default function SignIn() {
   const navigate = useNavigate()
@@ -6,6 +9,8 @@ export default function SignIn() {
   const handleSubmission = () => {
     navigate("/home"); 
   }
+
+  const [showPassword, setShowPassword] = useState(false);
   return (
     <>
       <form className="flex flex-col mt-[4vh] items-center">
@@ -20,7 +25,7 @@ export default function SignIn() {
             type="email"
             id="email"
             placeholder="you@example.com"
-            className="w-[40vh] h-[4vh] bg-transparent border-0 border-b-2 border-[var(--accent)] focus:outline-none focus:ring-0 text-white placeholder-white/50 mb-4"
+            className="w-[26.5vw] h-[4vh] bg-transparent border-0 border-b-2 border-[var(--accent)] focus:outline-none focus:ring-0 text-white placeholder-white/50 mb-4"
           />
         </div>
         <div className="flex flex-col items-start mb-[2vh]">
@@ -30,12 +35,26 @@ export default function SignIn() {
           >
             Password
           </label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Enter your password"
-            className="w-[40vh] h-[4vh] bg-transparent border-0 border-b-2 border-[var(--accent)] focus:outline-none focus:ring-0 text-white placeholder-white/50 mb-4"
-          />
+
+          <div className="flex flex-row border-0 border-b-2 border-[var(--accent)]">
+            <input
+              type={showPassword ? "text" : "password"}
+              id="password"
+              placeholder="Enter your password"
+              className="w-[25vw] h-[4vh] bg-transparent border-none focus:outline-none focus:ring-0 text-white placeholder-white/50 mb-4"
+            />
+            <button 
+                  type="button"
+                  className="bg-transparent border-none"
+                  onClick={() => setShowPassword(prev => !prev)}
+                >
+                  {showPassword ? (
+                    <img className="flex align-center justify-center w-[2vw]" src={eyeOpenIcon}></img>
+                  ) : (
+                    <img className="flex align-center justify-center w-[2vw]" src={eyeClosedIcon}></img>
+                  )}
+                </button>
+          </div>
         </div>
         <div className="flex items-center justify-between gap-[12vw] mb-[2vh] text-sm">
           <label className="flex items-center text-white">
