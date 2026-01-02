@@ -15,9 +15,9 @@ export default function SignUp() {
     confirmPassword: ''
   });
   
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
 
   const [passwordValidation, setPasswordValidation] = useState({
     isValid: false,
@@ -54,7 +54,7 @@ export default function SignUp() {
     });
   }, [formData.password, formData.confirmPassword]);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     setFormData(prevData => ({
       ...prevData,
@@ -63,128 +63,128 @@ export default function SignUp() {
   };
 
   // registration logic skeleton
-  //  const [registrationStep, setRegistrationStep] = useState('form');
-  // // const { registerUser } = useAuth();
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
+  // const [registrationStep, setRegistrationStep] = useState('form');
+  // const { registerUser } = useAuth();
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
     
-  //   // Clear previous error/success messages
-  //   setError('');
-  //   setSuccessMsg('');
+    // // Clear previous error/success messages
+    // setError('');
+    // setSuccessMsg('');
     
-  //   // Client-side validation
-  //   if (!passwordValidation.isValid) {
-  //     setError('Please ensure your password meets all requirements');
-  //     return;
-  //   }
+    // // Client-side validation
+    // if (!passwordValidation.isValid) {
+    //   setError('Please ensure your password meets all requirements');
+    //   return;
+    // }
     
-  //   if (!passwordValidation.matchesConfirm) {
-  //     setError('Passwords do not match');
-  //     return;
-  //   }
+    // if (!passwordValidation.matchesConfirm) {
+    //   setError('Passwords do not match');
+    //   return;
+    // }
     
-  //   setIsLoading(true);
+    // setIsLoading(true);
     
-  //   try {
-  //     const API_URL = 'https://resumaker-api.onrender.com';
+    // try {
+    //   const API_URL = 'https://resumaker-api.onrender.com';
       
-  //     // Send registration data to backend
-  //     const response = await fetch(`${API_URL}/api/auth/register`, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({
-  //         firstName: formData.firstName,
-  //         lastName: formData.lastName,
-  //         email: formData.email,
-  //         password: formData.password
-  //       })
-  //     });
+    //   // Send registration data to backend
+    //   const response = await fetch(`${API_URL}/api/auth/register`, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       firstName: formData.firstName,
+    //       lastName: formData.lastName,
+    //       email: formData.email,
+    //       password: formData.password
+    //     })
+    //   });
       
-  //     const data = await response.json();
+    //   const data = await response.json();
       
-  //     if (!response.ok) {
-  //       throw new Error(data.message || 'Registration failed');
-  //     }
-  //     localStorage.setItem('email', formData.email);
-  //     setRegistrationStep('verification');
+    //   if (!response.ok) {
+    //     throw new Error(data.message || 'Registration failed');
+    //   }
+    //   localStorage.setItem('email', formData.email);
+    //   setRegistrationStep('verification');
 
 
-  //     // Registration successful: store token and user data
-  //     setSuccessMsg('User registered successfully!');
-  //     // setRegistrationStep('complete');
+    //   // Registration successful: store token and user data
+    //   setSuccessMsg('User registered successfully!');
+    //   // setRegistrationStep('complete');
       
-  //     // registerUser(formData.firstName, formData.lastName, formData.email, formData.password);
-  //     localStorage.setItem("user", JSON.stringify(data.user));
-  //     localStorage.setItem("token", data.token);
-  //     console.log(localStorage.getItem('user'));
-  //     // Reset form
-  //     setFormData({
-  //       firstName: '',
-  //       lastName: '',
-  //       email: '',
-  //       password: '',
-  //       confirmPassword: ''
-  //     });
+    //   // registerUser(formData.firstName, formData.lastName, formData.email, formData.password);
+    //   localStorage.setItem("user", JSON.stringify(data.user));
+    //   localStorage.setItem("token", data.token);
+    //   console.log(localStorage.getItem('user'));
+    //   // Reset form
+    //   setFormData({
+    //     firstName: '',
+    //     lastName: '',
+    //     email: '',
+    //     password: '',
+    //     confirmPassword: ''
+    //   });
       
-  //   } catch (err) {
-  //     setError(err.message || 'An error occurred during registration');
-  //     console.error('Registration error:', err);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
+    // } catch (err) {
+    //   setError(err.message || 'An error occurred during registration');
+    //   console.error('Registration error:', err);
+    // } finally {
+    //   setIsLoading(false);
+    // }
+  };
 
   // Skeleton for api call to verify email and register
-  // const handleVerificationSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setIsLoading(true);
-  //   setError('');
+  const handleVerificationSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    // setIsLoading(true);
+    // setError('');
     
-  //   try {
-  //     const API_URL = 'https://resumaker-api.onrender.com';
-  //     const verificationCode = document.getElementById('verificationCode').value;
-  //     const tempToken = localStorage.getItem('tempRegToken');
+    // try {
+    //   const API_URL = 'https://resumaker-api.onrender.com';
+    //   const verificationCode = document.getElementById('verificationCode').value;
+    //   const tempToken = localStorage.getItem('tempRegToken');
       
-  //     // Connect to endpoint to verify user
-  //     const email=localStorage.getItem('email');
-  //     console.log(email + " " + verificationCode);
-  //     const response = await fetch(`${API_URL}/api/auth/verifyEmail`, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         // Include temp token if available
-  //         ...(tempToken && { 'Authorization': `Bearer ${tempToken}` }),
-  //       },
-  //       body: JSON.stringify({
-  //         email: email,
-  //         verificationCode: verificationCode
-  //       })
-  //     });
+    //   // Connect to endpoint to verify user
+    //   const email=localStorage.getItem('email');
+    //   console.log(email + " " + verificationCode);
+    //   const response = await fetch(`${API_URL}/api/auth/verifyEmail`, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       // Include temp token if available
+    //       ...(tempToken && { 'Authorization': `Bearer ${tempToken}` }),
+    //     },
+    //     body: JSON.stringify({
+    //       email: email,
+    //       verificationCode: verificationCode
+    //     })
+    //   });
       
-  //     const data = await response.json();
+    //   const data = await response.json();
       
-  //     if (!response.ok) {
-  //       throw new Error(data.message || 'Verification failed');
-  //     }
+    //   if (!response.ok) {
+    //     throw new Error(data.message || 'Verification failed');
+    //   }
       
-  //     // Verification successful
-  //     localStorage.removeItem('tempRegToken'); // Clean up temp token
-  //     localStorage.removeItem('email');
+    //   // Verification successful
+    //   localStorage.removeItem('tempRegToken'); // Clean up temp token
+    //   localStorage.removeItem('email');
       
-  //     navigate('/resume-builder');
-  //   } catch (err) {
-  //     setError(err.message || 'Verification failed. Please try again.');
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
+    //   navigate('/resume-builder');
+    // } catch (err) {
+    //   setError(err.message || 'Verification failed. Please try again.');
+    // } finally {
+    //   setIsLoading(false);
+    // }
+  };
 
 
   
   // Handle verification completion skeleton
-  // const handleVerificationComplete = () => {
+  const handleVerificationComplete = () => {
   //   setSuccessMsg('Registration successful! You can now log in.');
   //   setRegistrationStep('complete');
     
@@ -241,7 +241,7 @@ export default function SignUp() {
   //   } finally {
   //     setIsLoading(false);
   //   }
-  // };
+  };
 
   return (
     <>
@@ -307,11 +307,12 @@ export default function SignUp() {
           </label>
           <input
             type="password"
-            id="confirm-password"
+            id="confirmPassword"
             placeholder="Re-enter your password"
             className="w-[40vh] h-[4vh] bg-transparent border-0 border-b-2 border-[var(--accent)] focus:outline-none focus:ring-0 text-white placeholder-white/50 mb-4"
             value={formData.confirmPassword}
             onChange={handleChange}
+            required
           />
           {formData.confirmPassword && (
             <div className={`password-match ${passwordValidation.matchesConfirm ? 'matched' : 'not-matched'}`}>

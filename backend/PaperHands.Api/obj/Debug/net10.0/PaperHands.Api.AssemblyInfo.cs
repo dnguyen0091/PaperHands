@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PaperHands.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6e70cd3c9a19f7c6b9df2884cc98159fe7a6697a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+95b1519ae9905f00cf08bd7766e001ce3d1be267")]
 [assembly: System.Reflection.AssemblyProductAttribute("PaperHands.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PaperHands.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
