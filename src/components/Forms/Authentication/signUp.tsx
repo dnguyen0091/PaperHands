@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import eyeClosedIcon from '../../../assets/icons/eyeClosedIcon.svg';
+import eyeOpenIcon from '../../../assets/icons/eyeOpenIcon.svg';
+
 export default function SignUp() {
   const navigate = useNavigate();
 
@@ -14,10 +17,9 @@ export default function SignUp() {
     password: '',
     confirmPassword: ''
   });
-  
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [confirmPassword, setConfirmPassword] = useState("");
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const [passwordValidation, setPasswordValidation] = useState({
     isValid: false,
@@ -252,7 +254,7 @@ export default function SignUp() {
             type="email"
             id="email"
             placeholder="you@example.com"
-            className="w-[40vh] h-[4vh] bg-transparent border-0 border-b-2 border-[var(--accent)] focus:outline-none focus:ring-0 text-white placeholder-white/50 mb-4"
+            className="w-[26.5vw] h-[4vh] bg-transparent border-0 border-b-2 border-[var(--accent)] focus:outline-none focus:ring-0 text-white placeholder-white/50 mb-4"
             value={formData.email}
             onChange={handleChange}
           />
@@ -266,14 +268,27 @@ export default function SignUp() {
 
             Password
           </label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Enter your password"
-            className="w-[40vh] h-[4vh] bg-transparent border-0 border-b-2 border-[var(--accent)] focus:outline-none focus:ring-0 text-white placeholder-white/50 mb-4"
-            value={formData.password}
-            onChange={handleChange}
-          />
+          <div className="flex flex-row border-0 border-b-2 border-[var(--accent)]">
+            <input
+              type={showPassword ? "text" : "password"}
+              id="password"
+              placeholder="Enter your password"
+              className="w-[25vw] h-[4vh] bg-transparent border-none focus:outline-none focus:ring-0 text-white placeholder-white/50 mb-4"
+              value={formData.password}
+              onChange={handleChange}
+            />
+            <button 
+                type="button"
+                className="bg-transparent border-none"
+                onClick={() => setShowPassword(prev => !prev)}
+              >
+                {showPassword ? (
+                  <img className="flex align-center justify-center w-[2vw]" src={eyeOpenIcon}></img>
+                ) : (
+                  <img className="flex align-center justify-center w-[2vw]" src={eyeClosedIcon}></img>
+                )}
+              </button>
+          </div>
           {formData.password && (
             <div className="password-requirements">
               <p className="requirements-title" id="reqTitle">Password must have:</p>
@@ -305,15 +320,28 @@ export default function SignUp() {
           >
             Confirm Password
           </label>
-          <input
-            type="password"
-            id="confirmPassword"
-            placeholder="Re-enter your password"
-            className="w-[40vh] h-[4vh] bg-transparent border-0 border-b-2 border-[var(--accent)] focus:outline-none focus:ring-0 text-white placeholder-white/50 mb-4"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            required
-          />
+          <div className="flex flex-row border-0 border-b-2 border-[var(--accent)]">
+            <input
+              type={showConfirmPassword ? "text" : "password"}
+              id="confirmPassword"
+              placeholder="Re-enter your password"
+              className="w-[25vw] h-[4vh] bg-transparent border-none focus:outline-none focus:ring-0 text-white placeholder-white/50 mb-4"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+            />
+            <button 
+                type="button"
+                className="bg-transparent border-none"
+                onClick={() => setShowConfirmPassword(prev => !prev)}
+              >
+                {showConfirmPassword ? (
+                  <img className="flex align-center justify-center w-[2vw]" src={eyeOpenIcon}></img>
+                ) : (
+                  <img className="flex align-center justify-center w-[2vw]" src={eyeClosedIcon}></img>
+                )}
+              </button>
+          </div>
           {formData.confirmPassword && (
             <div className={`password-match ${passwordValidation.matchesConfirm ? 'matched' : 'not-matched'}`}>
               {passwordValidation.matchesConfirm ? 'Passwords match ✓' : 'Passwords do not match ✗'}
