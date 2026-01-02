@@ -290,9 +290,9 @@ export default function SignUp() {
               </button>
           </div>
           {formData.password && (
-            <div className="password-requirements">
-              <p className="requirements-title" id="reqTitle">Password must have:</p>
-              <ul className="requirements-list">
+            <div className="mt-1.5 p-[10px]">
+              <p className="font-[0.85rem] mb-2 text-[var(--black)]">Password must have:</p>
+              <ul className="list-none p-0 m-0">
                 <li className={passwordValidation.length ? 'met' : 'not-met'}>
                   At least 8 characters
                 </li>
@@ -343,7 +343,7 @@ export default function SignUp() {
               </button>
           </div>
           {formData.confirmPassword && (
-            <div className={`password-match ${passwordValidation.matchesConfirm ? 'matched' : 'not-matched'}`}>
+            <div className={`mt-1.5 text-[0.85rem] px-2 py-1 rounded ${passwordValidation.matchesConfirm ? 'text-green-500 bg-green-100' : 'text-red-500 bg-red-100'}`}>
               {passwordValidation.matchesConfirm ? 'Passwords match ✓' : 'Passwords do not match ✗'}
             </div>
           )}
