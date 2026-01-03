@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import eyeClosedIcon from "../../../assets/icons/eyeClosedIcon.svg";
 import eyeOpenIcon from "../../../assets/icons/eyeOpenIcon.svg";
 
-export default function SignIn() {
+interface SignInProps {
+  toggleForm: () => void;
+}
+
+export default function SignIn({ toggleForm }: SignInProps) {
   const navigate = useNavigate()
 
   const handleSubmission = () => {
@@ -13,7 +17,20 @@ export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <>
-      <form className="flex flex-col mt-[4vh] items-center">
+      <div className="w-full mb-8">
+        <h1 className="text-3xl font-bold text-black text-center mb-2">Welcome Back</h1>
+        <p className="text-center text-white/70 text-sm">
+          New to PaperHands?{" "}
+          <button 
+            type="button" 
+            onClick={toggleForm}
+            className="text-[var(--accent)] font-semibold hover:underline border-none bg-transparent mb-[2rem]"
+          >
+            Sign up
+          </button>
+        </p>
+      </div>
+      <form className="flex flex-col items-center w-full">
         <div className="flex flex-col items-start mb-[2vh]">
           <label
             htmlFor="email"

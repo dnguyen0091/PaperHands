@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import eyeClosedIcon from '../../../assets/icons/eyeClosedIcon.svg';
 import eyeOpenIcon from '../../../assets/icons/eyeOpenIcon.svg';
 
-export default function SignUp() {
+interface SignUpProps {
+  toggleForm: () => void;
+}
+
+export default function SignUp({ toggleForm }: SignUpProps) {
   const navigate = useNavigate();
 
   const onSubmission = () => {
@@ -247,7 +251,20 @@ export default function SignUp() {
 
   return (
     <>
-      <form className="flex flex-col mt-[4vh] items-center" onSubmit={handleSubmit}>
+      <div className="w-full mb-8">
+        <h1 className="text-3xl font-bold text-black text-center mb-2">Sign Up</h1>
+        <p className="text-center text-white/70 text-sm">
+          Already have an account?{" "}
+          <button 
+            type="button" 
+            onClick={toggleForm}
+            className="text-[var(--accent)] font-semibold hover:underline border-none bg-transparent mb-[2rem]" 
+          >
+            Sign in
+          </button>
+        </p>
+      </div>
+      <form className="flex flex-col items-center w-full" onSubmit={handleSubmit}>
         <div className="flex flex-col items-start mb-[2vh]">
           <label htmlFor="email" className="block text-sm font-medium text-white mb-1 self-start">Email</label>
           <input

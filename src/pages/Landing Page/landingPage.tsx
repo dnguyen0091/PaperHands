@@ -5,10 +5,11 @@ import Microsoft from "../../assets/logo/microsoftIcon.svg";
 import SignIn from "../../components/Forms/Authentication/signIn.tsx";
 import SignUp from "../../components/Forms/Authentication/signUp.tsx";
 import FrontPageInformation from "../../components/Helper/frontPageInformation.tsx";
-import SignInUpToggle from "../../components/Helper/signInUpToggle.tsx";
 
 export default function landingPage() {
     const [isSignIn, setIsSignIn] = useState(true);
+    
+    const toggleForm = () => setIsSignIn(prev => !prev);
 
     return (
         <div className="h-screen w-screen">
@@ -23,11 +24,8 @@ export default function landingPage() {
                 />
                 </div>
 
-                <div className="text-center mb-8"><p className="text-white/80">Let's get started</p></div>
-
-                <div className="flex justify-center flex-col items-center">
-                    <SignInUpToggle isSignIn={isSignIn} setIsSignIn={setIsSignIn} />
-                    {isSignIn ? <SignIn />:<SignUp />  }
+                <div className="flex justify-center flex-col items-center mt-[1.5rem]">
+                    {isSignIn ? <SignIn toggleForm={toggleForm} /> : <SignUp toggleForm={toggleForm} />}
                 </div>
                 
                 <div className="flex items-center my-6 p-[2rem] gap-[0.5rem]">
