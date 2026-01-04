@@ -1,3 +1,5 @@
+This project is currently under construction. It's purpose is to help me better understand using algorithms for trading by paper trading. The current scope of the project is to create a real time environment where users are able to create,test, and share trading algorithms with eachother within a safe environment.
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
