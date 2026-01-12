@@ -1,4 +1,4 @@
-import type { AccountSummary } from '../Helper/Types/accountSummary';
+import type { AccountSummary } from '../Helper/Types/AccountSummary';
 
 export default function AccountSummary({ account }: { account: AccountSummary }) {
     return (
