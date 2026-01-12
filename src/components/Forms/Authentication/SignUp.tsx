@@ -143,8 +143,8 @@ export default function SignUp({ toggleForm }: SignUpProps) {
   };
 
   // Skeleton for api call to verify email and register
-  const handleVerificationSubmit = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
+ // const handleVerificationSubmit = async (e: { preventDefault: () => void; }) => {
+    //e.preventDefault();
     // setIsLoading(true);
     // setError('');
     
@@ -185,12 +185,12 @@ export default function SignUp({ toggleForm }: SignUpProps) {
     // } finally {
     //   setIsLoading(false);
     // }
-  };
+  //};
 
 
   
   // Handle verification completion skeleton
-  const handleVerificationComplete = () => {
+  //const handleVerificationComplete = () => {
   //   setSuccessMsg('Registration successful! You can now log in.');
   //   setRegistrationStep('complete');
     
@@ -247,7 +247,7 @@ export default function SignUp({ toggleForm }: SignUpProps) {
   //   } finally {
   //     setIsLoading(false);
   //   }
-  };
+  //};
 
   return (
     <>
