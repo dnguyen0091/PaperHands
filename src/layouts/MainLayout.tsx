@@ -1,20 +1,15 @@
 import { Outlet } from 'react-router-dom';
-// import Header from '../components/Helper/header.tsx';
+import Sidebar from '../components/Navigation/Sidebar';
 
 function MainLayout() {
   return (
-    <div className="app-container">
-      {/* <Header /> */}
-      
-      {/* Content area */}
-      <div className="content-container">
-        {/* NavPill centered */}
-        {/* <div className="nav-pill-wrapper">
-          <NavPill />
-        </div> */}
+    <div className="flex min-h-screen bg-slate-50">
+      {/* Sidebar */}
+      <Sidebar />
 
-        {/* Main content area */}
-        <main className="page-content">
+      {/* Main content area with left margin for sidebar */}
+      <div className="flex-1 ml-64">
+        <main className="p-6">
           <Outlet />
         </main>
       </div>
