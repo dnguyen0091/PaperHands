@@ -35,7 +35,7 @@ export default function SignUp({ toggleForm }: SignUpProps) {
     matchesConfirm: false
   });
 
-   useEffect(() => {
+  useEffect(() => {
     const { password, confirmPassword } = formData;
     
     // Password validation criteria
@@ -43,7 +43,7 @@ export default function SignUp({ toggleForm }: SignUpProps) {
     const hasUppercase = /[A-Z]/.test(password);
     const hasLowercase = /[a-z]/.test(password);
     const hasNumber = /[0-9]/.test(password);
-    const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+    const hasSpecialChar = /[!@#$%^&*()_+=\[\]{};:'",.<>?/\\|`~-]/.test(password);
     const matchesConfirm = password === confirmPassword && password !== '';
     
     // Check if all criteria are met
