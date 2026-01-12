@@ -35,7 +35,7 @@ export default function SignUp({ toggleForm }: SignUpProps) {
     matchesConfirm: false
   });
 
-   useEffect(() => {
+  useEffect(() => {
     const { password, confirmPassword } = formData;
     
     // Password validation criteria
@@ -43,7 +43,7 @@ export default function SignUp({ toggleForm }: SignUpProps) {
     const hasUppercase = /[A-Z]/.test(password);
     const hasLowercase = /[a-z]/.test(password);
     const hasNumber = /[0-9]/.test(password);
-    const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+    const hasSpecialChar = /[!@#$%^&*()_+=\[\]{};:'",.<>?/\\|`~-]/.test(password);
     const matchesConfirm = password === confirmPassword && password !== '';
     
     // Check if all criteria are met
@@ -143,8 +143,8 @@ export default function SignUp({ toggleForm }: SignUpProps) {
   };
 
   // Skeleton for api call to verify email and register
-  const handleVerificationSubmit = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
+ // const handleVerificationSubmit = async (e: { preventDefault: () => void; }) => {
+    //e.preventDefault();
     // setIsLoading(true);
     // setError('');
     
@@ -185,12 +185,12 @@ export default function SignUp({ toggleForm }: SignUpProps) {
     // } finally {
     //   setIsLoading(false);
     // }
-  };
+  //};
 
 
   
   // Handle verification completion skeleton
-  const handleVerificationComplete = () => {
+  //const handleVerificationComplete = () => {
   //   setSuccessMsg('Registration successful! You can now log in.');
   //   setRegistrationStep('complete');
     
@@ -247,7 +247,7 @@ export default function SignUp({ toggleForm }: SignUpProps) {
   //   } finally {
   //     setIsLoading(false);
   //   }
-  };
+  //};
 
   return (
     <>

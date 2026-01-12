@@ -1,9 +1,9 @@
 // ...existing code...
-import AccountSummary from '../../components/Features/accountSummary';
-import PerformanceChart from '../../components/Features/performanceChart';
-import PositionsTable from '../../components/Features/positionsTable';
-import StrategyTester from '../../components/Features/strategyTester';
-import TradeHistory from '../../components/Features/tradeHistory';
+import AccountSummary from '../../components/Features/AccountSummary';
+import PerformanceChart from '../../components/Features/PerformanceChart';
+import PositionsTable from '../../components/Features/PositionsTable';
+import StrategyTester from '../../components/Features/StrategyTester';
+import TradeHistory from '../../components/Features/TradeHistory';
 
 export default function HomePage() {
     // TODO: replace with real data hooks/services (alpaca/finnhub)

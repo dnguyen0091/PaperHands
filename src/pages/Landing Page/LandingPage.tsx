@@ -2,9 +2,9 @@ import { useState } from "react";
 import Apple from "../../assets/logo/appleIcon.svg";
 import Google from "../../assets/logo/googleIcon.svg";
 import Microsoft from "../../assets/logo/microsoftIcon.svg";
-import SignIn from "../../components/Forms/Authentication/signIn.tsx";
-import SignUp from "../../components/Forms/Authentication/signUp.tsx";
-import FrontPageInformation from "../../components/Helper/frontPageInformation.tsx";
+import SignIn from "../../components/Forms/Authentication/SignIn.tsx";
+import SignUp from "../../components/Forms/Authentication/SignUp.tsx";
+import FrontPageInformation from "../../components/Helper/FrontPageInformation.tsx";
 
 export default function landingPage() {
     const [isSignIn, setIsSignIn] = useState(true);
