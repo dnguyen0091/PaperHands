@@ -21,12 +21,9 @@ export default function Sidebar() {
 
     return (
         <aside
-            className={`fixed left-0 top-0 h-screen bg-[#1e1e1e] border-r border-[#2a2a2a] text-[#e3e3e3] z-50 flex flex-col ${
+            className={`fixed left-0 top-0 h-screen bg-[#1e1e1e] border-r border-[#2a2a2a] text-[#e3e3e3] z-50 flex flex-col transition-all duration-[270ms] ease-[cubic-bezier(0.23,1,0.32,1)] ${
                 isExpanded ? 'w-64' : 'w-16'
             }`}
-            style={{
-                transition: 'width 2700ms cubic-bezier(0.23, 1, 0.32, 1)'
-            }}
             onMouseEnter={() => setIsExpanded(true)}
             onMouseLeave={() => setIsExpanded(false)}
         >
