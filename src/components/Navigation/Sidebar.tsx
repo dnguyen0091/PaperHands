@@ -65,10 +65,10 @@ export default function Sidebar() {
                                 key={item.path}
                                 to={item.path}
                                 className={`
-                                    group flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all
+                                    group flex items-center gap-3 px-3 py-2.5 rounded-lg transition-opacity
                                     ${isActive 
-                                        ? 'bg-[#2a2a2a] text-white' 
-                                        : 'text-[#b3b3b3] hover:bg-[#252525] hover:text-white'
+                                        ? 'text-white opacity-100' 
+                                        : 'text-[#b3b3b3] opacity-100 hover:opacity-50'
                                     }
                                     ${!isExpanded && 'justify-center'}
                                 `}
@@ -142,7 +142,7 @@ export default function Sidebar() {
                 {/* User Button */}
                 <button
                     onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                    className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-[#2a2a2a] transition-colors ${
+                    className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-opacity hover:opacity-50 bg-transparent border-none ${
                         !isExpanded && 'justify-center'
                     }`}
                 >
@@ -157,9 +157,9 @@ export default function Sidebar() {
                                 opacity: 0
                             }}
                         >
-                            <span className="text-sm font-medium truncate text-white">Username</span>
+                            <span className="text-sm font-medium truncate text-white invert">Username</span>
                             <svg 
-                                className={`w-4 h-4 text-[#808080] transition-transform duration-200 ${isUserMenuOpen ? 'rotate-180' : ''}`} 
+                                className={`w-4 h-4 text-white transition-transform duration-200 ${isUserMenuOpen ? 'rotate-180' : ''}`} 
                                 fill="none" 
                                 stroke="currentColor" 
                                 viewBox="0 0 24 24"
