@@ -28,27 +28,24 @@ export default function Sidebar() {
             onMouseLeave={() => setIsExpanded(false)}
         >
             {/* Header */}
-            <div className="p-4 border-b border-[#2a2a2a]">
-                <button
-                    className={`w-full flex items-center gap-3 px-3 py-2.5 bg-transparent border border-[#3a3a3a] rounded-lg hover:bg-[#2a2a2a] transition-colors ${
-                        !isExpanded && 'justify-center'
-                    }`}
-                >
-                    <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                    </svg>
+            <div className="p-4 border-b border-[#2a2a2a] mb-[2.5rem]">
+                <div className={`flex items-center gap-3 ${!isExpanded && 'justify-center'}`}>
+                    {/* Logo Placeholder */}
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center shrink-0">
+                        <span className="text-white text-sm font-bold">P</span>
+                    </div>
                     {isExpanded && (
                         <span 
-                            className="text-sm font-medium whitespace-nowrap"
+                            className="text-lg font-semibold text-white whitespace-nowrap"
                             style={{
                                 animation: 'fadeInSlide 400ms ease-out forwards',
                                 opacity: 0
                             }}
                         >
-                            New Session
+                            Paper Hands
                         </span>
                     )}
-                </button>
+                </div>
             </div>
 
             {/* Navigation */}
