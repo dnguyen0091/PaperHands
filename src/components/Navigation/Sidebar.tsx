@@ -21,9 +21,12 @@ export default function Sidebar() {
 
     return (
         <aside
-            className={`fixed left-0 top-0 h-screen bg-[#1e1e1e] border-r border-[#2a2a2a] text-[#e3e3e3] transition-all duration-300 ease-in-out z-50 flex flex-col ${
+            className={`fixed left-0 top-0 h-screen bg-[#1e1e1e] border-r border-[#2a2a2a] text-[#e3e3e3] z-50 flex flex-col ${
                 isExpanded ? 'w-64' : 'w-16'
             }`}
+            style={{
+                transition: 'width 2700ms cubic-bezier(0.23, 1, 0.32, 1)'
+            }}
             onMouseEnter={() => setIsExpanded(true)}
             onMouseLeave={() => setIsExpanded(false)}
         >
@@ -37,7 +40,17 @@ export default function Sidebar() {
                     <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                     </svg>
-                    {isExpanded && <span className="text-sm font-medium whitespace-nowrap">New Session</span>}
+                    {isExpanded && (
+                        <span 
+                            className="text-sm font-medium whitespace-nowrap"
+                            style={{
+                                animation: 'fadeInSlide 400ms ease-out forwards',
+                                opacity: 0
+                            }}
+                        >
+                            New Session
+                        </span>
+                    )}
                 </button>
             </div>
 
@@ -62,7 +75,13 @@ export default function Sidebar() {
                             >
                                 <span className="text-lg shrink-0">{item.icon}</span>
                                 {isExpanded && (
-                                    <div className="flex-1 flex items-center justify-between min-w-0">
+                                    <div 
+                                        className="flex-1 flex items-center justify-between min-w-0"
+                                        style={{
+                                            animation: 'fadeInSlide 400ms ease-out forwards',
+                                            opacity: 0
+                                        }}
+                                    >
                                         <span className="text-sm font-medium truncate">{item.label}</span>
                                         {isActive && (
                                             <div className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />
@@ -86,7 +105,13 @@ export default function Sidebar() {
                         U
                     </div>
                     {isExpanded && (
-                        <div className="flex-1 min-w-0">
+                        <div 
+                            className="flex-1 min-w-0"
+                            style={{
+                                animation: 'fadeInSlide 400ms ease-out forwards',
+                                opacity: 0
+                            }}
+                        >
                             <div className="text-sm font-medium truncate">User Account</div>
                             <div className="text-xs text-[#808080] truncate">user@example.com</div>
                         </div>
