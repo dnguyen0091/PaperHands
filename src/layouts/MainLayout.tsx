@@ -8,7 +8,7 @@ function MainLayout() {
       <Sidebar />
 
       {/* Main content area with left margin for sidebar */}
-      <div className="flex-1 ml-64">
+      <div className="flex-1 ml-16">
         <main className="p-6">
           <Outlet />
         </main>

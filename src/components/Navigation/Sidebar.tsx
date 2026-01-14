@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 type NavItem = {
@@ -17,61 +17,82 @@ const navItems: NavItem[] = [
 
 export default function Sidebar() {
     const location = useLocation();
+    const [isExpanded, setIsExpanded] = useState(false);
 
     return (
-        <motion.aside
-            initial={{ x: -280 }}
-            animate={{ x: 0 }}
-            className="fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-slate-900 to-slate-800 text-white shadow-2xl z-40"
+        <aside
+            className={`fixed left-0 top-0 h-screen bg-[#1e1e1e] border-r border-[#2a2a2a] text-[#e3e3e3] transition-all duration-300 ease-in-out z-50 flex flex-col ${
+                isExpanded ? 'w-64' : 'w-16'
+            }`}
+            onMouseEnter={() => setIsExpanded(true)}
+            onMouseLeave={() => setIsExpanded(false)}
         >
-            {/* Logo/Brand */}
-            <div className="p-6 border-b border-slate-700">
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
-                    PaperHands
-                </h1>
-                <p className="text-xs text-slate-400 mt-1">Paper Trading Platform</p>
+            {/* Header */}
+            <div className="p-4 border-b border-[#2a2a2a]">
+                <button
+                    className={`w-full flex items-center gap-3 px-3 py-2.5 bg-transparent border border-[#3a3a3a] rounded-lg hover:bg-[#2a2a2a] transition-colors ${
+                        !isExpanded && 'justify-center'
+                    }`}
+                >
+                    <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                    </svg>
+                    {isExpanded && <span className="text-sm font-medium whitespace-nowrap">New Session</span>}
+                </button>
             </div>
 
             {/* Navigation */}
-            <nav className="p-4 space-y-2">
-                {navItems.map((item) => {
-                    const isActive = location.pathname === item.path;
-                    return (
-                        <Link
-                            key={item.path}
-                            to={item.path}
-                            className="relative block"
-                        >
-                            <motion.div
-                                whileHover={{ x: 4 }}
+            <nav className="flex-1 overflow-y-auto py-2 px-2">
+                <div className="space-y-1">
+                    {navItems.map((item) => {
+                        const isActive = location.pathname === item.path;
+
+                        return (
+                            <Link
+                                key={item.path}
+                                to={item.path}
                                 className={`
-                                    flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200
-                                    ${isActive
-                                        ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg shadow-green-500/50'
-                                        : 'text-slate-300 hover:bg-slate-700/50 hover:text-white'
+                                    group flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all
+                                    ${isActive 
+                                        ? 'bg-[#2a2a2a] text-white' 
+                                        : 'text-[#b3b3b3] hover:bg-[#252525] hover:text-white'
                                     }
+                                    ${!isExpanded && 'justify-center'}
                                 `}
                             >
-                                <span className="text-xl">{item.icon}</span>
-                                <span className="font-medium">{item.label}</span>
-                            </motion.div>
-                        </Link>
-                    );
-                })}
+                                <span className="text-lg shrink-0">{item.icon}</span>
+                                {isExpanded && (
+                                    <div className="flex-1 flex items-center justify-between min-w-0">
+                                        <span className="text-sm font-medium truncate">{item.label}</span>
+                                        {isActive && (
+                                            <div className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />
+                                        )}
+                                    </div>
+                                )}
+                            </Link>
+                        );
+                    })}
+                </div>
             </nav>
 
             {/* Bottom Section */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-slate-700">
-                <div className="flex items-center gap-3 px-4 py-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center text-white font-semibold">
+            <div className="border-t border-[#2a2a2a] p-4">
+                <button
+                    className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-[#2a2a2a] transition-colors ${
+                        !isExpanded && 'justify-center'
+                    }`}
+                >
+                    <div className="w-7 h-7 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center text-white text-xs font-bold shrink-0">
                         U
                     </div>
-                    <div className="flex-1">
-                        <p className="text-sm font-medium">User Account</p>
-                        <p className="text-xs text-slate-400">View Profile</p>
-                    </div>
-                </div>
+                    {isExpanded && (
+                        <div className="flex-1 min-w-0">
+                            <div className="text-sm font-medium truncate">User Account</div>
+                            <div className="text-xs text-[#808080] truncate">user@example.com</div>
+                        </div>
+                    )}
+                </button>
             </div>
-        </motion.aside>
+        </aside>
     );
 }
