@@ -1,5 +1,10 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import graphIcon from '../../assets/icons/graphIcon.svg';
+import portfolioIcon from '../../assets/icons/portfolioIcon.svg';
+import robotIcon from '../../assets/icons/robotIcon.svg';
+import settingsIcon from '../../assets/icons/settingsIcon.svg';
+import stockIcon from '../../assets/icons/stockIcon.svg';
 
 type NavItem = {
     path: string;
@@ -8,11 +13,11 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-    { path: '/home', label: 'Dashboard', icon: '📊' },
-    { path: '/algorithms', label: 'Algorithms', icon: '🤖' },
-    { path: '/portfolio', label: 'Portfolio', icon: '💼' },
-    { path: '/history', label: 'History', icon: '📈' },
-    { path: '/settings', label: 'Settings', icon: '⚙️' },
+    { path: '/home', label: 'Dashboard', icon: graphIcon },
+    { path: '/algorithms', label: 'Algorithms', icon: robotIcon },
+    { path: '/portfolio', label: 'Portfolio', icon: portfolioIcon },
+    { path: '/history', label: 'History', icon: stockIcon },
+    { path: '/settings', label: 'Settings', icon: settingsIcon },
 ];
 
 export default function Sidebar() {
@@ -67,7 +72,7 @@ export default function Sidebar() {
                                     ${!isExpanded && 'justify-center'}
                                 `}
                             >
-                                <span className="text-lg shrink-0">{item.icon}</span>
+                                <img src={item.icon} alt={item.label} className="w-[1.5vw] h-[1.5vw] shrink-0" />
                                 {isExpanded && (
                                     <div 
                                         className="flex-1 flex items-center justify-between min-w-0"
