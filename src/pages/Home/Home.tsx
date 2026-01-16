@@ -1,26 +1,44 @@
 import { useState } from 'react';
-import AccountSummary from '../../components/Features/AccountSummary';
-import AlgorithmPanel from '../../components/Features/AlgorithmPanel';
-import PerformanceChart from '../../components/Features/PerformanceChart';
-import PerformanceMetrics from '../../components/Features/PerformanceMetrics';
-import PositionsTable from '../../components/Features/PositionsTable';
-import StrategyTester from '../../components/Features/StrategyTester';
-import TradeHistory from '../../components/Features/TradeHistory';
-import type { Algorithm } from '../../components/Helper/Types/Algorithm';
+import type { PositionItem } from '../../components/Features';
+import {
+    AlgorithmSelector,
+    AlgorithmStatsCard,
+    BuyingPowerCard,
+    generateChartData,
+    NewsFeed,
+    PortfolioChart,
+    PortfolioHeader,
+    PositionsCard,
+    RecentActivityCard,
+    WatchlistCard,
+} from '../../components/Features';
+import type { TimePeriod } from '../../components/Features/PortfolioChart';
+import type { Activity } from '../../components/Helper/Types/Activity';
+import type { AlgorithmAccount } from '../../components/Helper/Types/AlgorithmAccount';
+import type { NewsItem } from '../../components/Helper/Types/NewsItem';
+import type { WatchlistItem } from '../../components/Helper/Types/WatchlistItem';
 
 export default function HomePage() {
-    const [isAlgorithmPanelOpen, setIsAlgorithmPanelOpen] = useState(false);
+    const [selectedPeriod, setSelectedPeriod] = useState<TimePeriod>('1D');
+    const [selectedAlgorithm, setSelectedAlgorithm] = useState<string>('portfolio');
+    const [hoveredValue, setHoveredValue] = useState<number | null>(null);
 
-    // TODO: replace with real data hooks/services (alpaca/finnhub)
-    const demoAccount = {
-        balance: 12540.23,
-        pnl: 420.12,
-        dailyChangePct: 1.8,
-        history: [] as number[]
-    };
-
-    // Demo algorithms
-    const demoAlgorithms: Algorithm[] = [
+    // Demo algorithms with performance data
+    const algorithms: AlgorithmAccount[] = [
+        {
+            id: 'portfolio',
+            name: 'Total Portfolio',
+            description: 'Combined performance of all algorithms',
+            status: 'active',
+            returns: 18.42,
+            winRate: 64.2,
+            totalTrades: 286,
+            activeSince: '2024-01-01',
+            lastModified: '2024-03-15',
+            portfolioValue: 24847.23,
+            dailyChange: 847.12,
+            dailyChangePercent: 3.52,
+        },
         {
             id: '1',
             name: 'Momentum Trader',
@@ -31,6 +49,9 @@ export default function HomePage() {
             totalTrades: 145,
             activeSince: '2024-01-15',
             lastModified: '2024-03-10',
+            portfolioValue: 11240.50,
+            dailyChange: 312.45,
+            dailyChangePercent: 2.86,
         },
         {
             id: '2',
@@ -42,91 +63,135 @@ export default function HomePage() {
             totalTrades: 89,
             activeSince: '2024-02-01',
             lastModified: '2024-03-08',
+            portfolioValue: 4823.18,
+            dailyChange: -67.32,
+            dailyChangePercent: -1.38,
         },
         {
             id: '3',
             name: 'Volatility Breakout',
             description: 'Trades breakouts during high volatility periods',
-            status: 'testing',
+            status: 'active',
             returns: 8.7,
             winRate: 61.5,
             totalTrades: 52,
             activeSince: '2024-03-01',
             lastModified: '2024-03-12',
+            portfolioValue: 8783.55,
+            dailyChange: 601.99,
+            dailyChangePercent: 7.35,
         },
     ];
 
+    const selectedAccount = algorithms.find((a) => a.id === selectedAlgorithm) || algorithms[0];
+    const chartData = generateChartData(selectedPeriod, selectedAccount.portfolioValue);
+    const isPositive = selectedAccount.dailyChange >= 0;
+
+    // Watchlist data
+    const watchlist: WatchlistItem[] = [
+        { symbol: 'AAPL', name: 'Apple Inc.', price: 178.72, change: 2.34, changePercent: 1.33 },
+        { symbol: 'MSFT', name: 'Microsoft', price: 378.91, change: 4.21, changePercent: 1.12 },
+        { symbol: 'GOOGL', name: 'Alphabet', price: 141.80, change: -1.23, changePercent: -0.86 },
+        { symbol: 'TSLA', name: 'Tesla Inc.', price: 248.50, change: 12.30, changePercent: 5.21 },
+        { symbol: 'NVDA', name: 'NVIDIA', price: 875.28, change: 23.45, changePercent: 2.75 },
+        { symbol: 'AMD', name: 'AMD', price: 178.34, change: -2.18, changePercent: -1.21 },
+    ];
+
+    // Positions data
+    const positions: PositionItem[] = [
+        { symbol: 'AAPL', shares: 10, value: 1787.20, pnl: 124.50, pnlPercent: 7.48 },
+        { symbol: 'NVDA', shares: 5, value: 4376.40, pnl: 892.15, pnlPercent: 25.6 },
+        { symbol: 'TSLA', shares: 8, value: 1988.00, pnl: -156.80, pnlPercent: -7.31 },
+    ];
+
+    // Recent activity data
+    const activities: Activity[] = [
+        { id: '1', type: 'BUY', symbol: 'NVDA', description: 'Bought NVDA', details: '2 shares at $871.50', time: '1h ago' },
+        { id: '2', type: 'SELL', symbol: 'AMD', description: 'Sold AMD', details: '5 shares at $180.25', time: '3h ago' },
+        { id: '3', type: 'DIV', symbol: 'AAPL', description: 'Dividend from AAPL', details: '$2.40 received', time: '2d ago' },
+    ];
+
+    // News data
+    const news: NewsItem[] = [
+        { id: '1', source: 'Reuters', title: 'Fed signals potential rate cuts in coming months', time: '2h ago' },
+        { id: '2', source: 'Bloomberg', title: 'Tech stocks rally as earnings beat expectations', time: '4h ago', symbol: 'AAPL' },
+        { id: '3', source: 'CNBC', title: 'NVIDIA announces new AI chip architecture', time: '5h ago', symbol: 'NVDA' },
+        { id: '4', source: 'MarketWatch', title: 'Crypto markets stabilize after weekend volatility', time: '6h ago' },
+    ];
+
     return (
-        <div className="min-h-screen">
-            {/* Header */}
-            <header className="mb-8">
-                <div className="flex items-center justify-between">
-                    <div>
-                        <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-                        <p className="text-gray-500 mt-1">Welcome back! Here's your portfolio overview.</p>
+        <div className="min-h-screen bg-black text-white">
+            <div className="max-w-7xl mx-auto px-4 py-6">
+                {/* Main Content Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    {/* Left Column - Chart & Portfolio */}
+                    <div className="lg:col-span-2 space-y-6">
+                        {/* Portfolio Header with Algorithm Selector */}
+                        <div className="space-y-2">
+                            <AlgorithmSelector
+                                algorithms={algorithms}
+                                selectedAlgorithm={selectedAlgorithm}
+                                onSelectAlgorithm={setSelectedAlgorithm}
+                                onCreateNew={() => console.log('Create new algorithm')}
+                            />
+                            <PortfolioHeader
+                                value={selectedAccount.portfolioValue}
+                                dailyChange={selectedAccount.dailyChange}
+                                dailyChangePercent={selectedAccount.dailyChangePercent}
+                                hoveredValue={hoveredValue}
+                            />
+                        </div>
+
+                        {/* Chart */}
+                        <PortfolioChart
+                            data={chartData}
+                            isPositive={isPositive}
+                            selectedPeriod={selectedPeriod}
+                            onPeriodChange={setSelectedPeriod}
+                            onHover={setHoveredValue}
+                        />
+
+                        {/* Buying Power Card */}
+                        <BuyingPowerCard
+                            buyingPower={8420.50}
+                            onDeposit={() => console.log('Deposit clicked')}
+                        />
+
+                        {/* Algorithm Stats */}
+                        <AlgorithmStatsCard account={selectedAccount} />
+
+                        {/* News Feed */}
+                        <NewsFeed
+                            news={news}
+                            onItemClick={(item) => console.log('News clicked:', item)}
+                        />
                     </div>
-                    <button
-                        onClick={() => setIsAlgorithmPanelOpen(true)}
-                        className="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg font-medium hover:from-green-600 hover:to-emerald-700 transition-all shadow-md hover:shadow-lg flex items-center gap-2"
-                    >
-                        <span>🤖</span>
-                        View Algorithms
-                    </button>
-                </div>
-            </header>
 
-            {/* Main Content */}
-            <div className="space-y-6">
-                {/* Account Summary Card */}
-                <AccountSummary account={demoAccount} />
+                    {/* Right Column - Watchlist & Positions */}
+                    <div className="space-y-6">
+                        {/* Watchlist */}
+                        <WatchlistCard
+                            items={watchlist}
+                            onItemClick={(item) => console.log('Stock clicked:', item)}
+                            onAddClick={() => console.log('Add to watchlist')}
+                            onShowMore={() => console.log('Show more watchlist')}
+                        />
 
-                {/* Performance Metrics Grid */}
-                <PerformanceMetrics
-                    totalValue={demoAccount.balance}
-                    todayPnL={demoAccount.pnl}
-                    todayPnLPercent={demoAccount.dailyChangePct}
-                    totalReturn={15.2}
-                    winRate={62.5}
-                    activePositions={8}
-                />
+                        {/* Active Positions */}
+                        <PositionsCard
+                            positions={positions}
+                            onPositionClick={(position) => console.log('Position clicked:', position)}
+                            onViewAll={() => console.log('View all positions')}
+                        />
 
-                {/* Performance Chart */}
-                <div className="bg-white rounded-xl p-6 shadow-md">
-                    <h2 className="text-lg font-semibold mb-4 text-gray-900">Performance Chart</h2>
-                    <PerformanceChart series={demoAccount.history} />
-                </div>
-
-                {/* Two Column Layout */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* Positions */}
-                    <div className="bg-white rounded-xl p-6 shadow-md">
-                        <h2 className="text-lg font-semibold mb-4 text-gray-900">Current Positions</h2>
-                        <PositionsTable />
+                        {/* Recent Activity */}
+                        <RecentActivityCard
+                            activities={activities}
+                            onActivityClick={(activity) => console.log('Activity clicked:', activity)}
+                        />
                     </div>
-
-                    {/* Trade History */}
-                    <div className="bg-white rounded-xl p-6 shadow-md">
-                        <h2 className="text-lg font-semibold mb-4 text-gray-900">Recent Trades</h2>
-                        <TradeHistory />
-                    </div>
-                </div>
-
-                {/* Strategy Tester */}
-                <div className="bg-white rounded-xl p-6 shadow-md">
-                    <h2 className="text-lg font-semibold mb-4 text-gray-900">Strategy Tester</h2>
-                    <StrategyTester />
                 </div>
             </div>
-
-            {/* Algorithm Panel */}
-            <AlgorithmPanel
-                isOpen={isAlgorithmPanelOpen}
-                onClose={() => setIsAlgorithmPanelOpen(false)}
-                algorithms={demoAlgorithms}
-                onToggleAlgorithm={(id) => console.log('Toggle algorithm:', id)}
-                onEditAlgorithm={(id) => console.log('Edit algorithm:', id)}
-                onViewDetails={(id) => console.log('View details:', id)}
-            />
         </div>
     );
 }
