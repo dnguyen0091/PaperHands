@@ -7,12 +7,10 @@ function MainLayout() {
       {/* Sidebar */}
       <Sidebar />
 
-      {/* Main content area with left margin for sidebar */}
-      <div className="flex-1 ml-16">
-        <main className="p-6">
-          <Outlet />
-        </main>
-      </div>
+      {/* Main content area - flexbox handles the spacing */}
+      <main className="flex-1 p-6 overflow-auto">
+        <Outlet />
+      </main>
     </div>
   );
 }
